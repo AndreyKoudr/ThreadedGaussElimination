@@ -67,8 +67,6 @@ Times for solution of system 10000 x 10000 on Aspire A515-44 with CPU AMD Ryzen 
 
   Max speedup 13.5
 
-
-    95% of CPU time is spent on ThreadProc4()/ThreadProc8(). Simple C++ 11/14 thread construction/destruction does not take much time.
-
-    Increase of threads does not demonstrate sufficient speedup due to current CPU - 6 logical cores. My previuos tests on a desktop with 2 Xeons (32 cores and multiple real sets of XMM registers) made speedup of up to 140 with multiple threads.
+95% of CPU time is spent on ThreadProc4()/ThreadProc8(). Simple C++ 11/14 thread construction/destruction does not take much time.
+Increase in number of threads does not demonstrate sufficient speedup due to current CPU - 6 logical cores. My previuos tests on a desktop with 2 Xeons (32 cores and multiple real sets of XMM registers) made speedup of up to 140 with multiple threads.
 
