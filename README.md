@@ -26,20 +26,21 @@ The project itself is a Windows console which makes two tests, one 5x5 and one 1
 
 Times for solution of system 10000 x 10000 on Aspire A515-44 with CPU AMD Ryzen 5 4500U 2.38GHz, 8Gb of RAM.
 
-  The code is compiled in Release on VS 2019, optimised.
+The code is compiled in Release on VS 2019, optimised.
 
-  4-byte floats
-  -------------
+  ==4-byte floats
 
   solveSystemSimple() (regular C, no SIMD, no multithreading)     2655 sec
 
   solveSystem() (SIMD, multithreading)
-  num threads 1                                                    172
-  num threads 2                                                    137
+  *num threads 1                                                    172
+  *num threads 2                                                    137
   num threads 3                                                    145
   num threads 4                                                    147
   num threads 5                                                    152
+  
   num threads 6                                                    156
+  
   num threads 7                                                    158
   num threads 8                                                    151
   num threads 9                                                    151
