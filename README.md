@@ -14,7 +14,7 @@ Allocator
 ---------
 We need a big chunk of memory in one extent to place the system matrix in it.
 
-Class Allocator allocates a big buffer to hold the whole matrix in memory and save/restore its contents in a file. The file is created in current directory named as <I>VirtSquareMatrix.bin</I>. This directory must be writable - no checks made. You may change it to a path in a temporary directory.
+Class Allocator allocates a big buffer to hold the whole matrix in memory and save/restore its contents in a file. The file is created in current directory named as <I>VirtSquareMatrix.bin</I>. This directory must be writable - no checks made. You may change it to a path in a temporary directory. The file writing mechanism is made with fopen/fwrite functions - not in favor now and VS tolerate it with only <I>#define _CRT_SECURE_NO_WARNINGS</I> set in defines.h. It stores/reads file by big 10M memory chunks what maybe (I do not know) faster than to use std::fstream.
 
 Allocation is 16-byte aligned by a normal malloc() in 64-bit code. This enables use of 16-byte aligned XMM intructions which, in my experiments give some poor improvement in speed (5-10%). Not very much, despite non-aligned instructions would require two memory reads instead of one in loading/writing XMM register contents from/to memory.
 
@@ -39,7 +39,7 @@ The code is compiled in Release on VS 2019, optimised.
 
   solveSystem() (SIMD, multithreading)
   
-  num threads 1                                                    172
+  num threads 1                                                    172 sec
   
   num threads 2                                                    137
   
@@ -69,7 +69,7 @@ The code is compiled in Release on VS 2019, optimised.
 
   solveSystem() (SIMD, multithreading)
   
-  num threads 1                                                    330
+  num threads 1                                                    330 sec
   
   num threads 2                                                    268
   
