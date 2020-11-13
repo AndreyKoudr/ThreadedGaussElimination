@@ -28,22 +28,31 @@ Times for solution of system 10000 x 10000 on Aspire A515-44 with CPU AMD Ryzen 
 
 The code is compiled in Release on VS 2019, optimised.
 
-  ==4-byte floats
+  4-byte floats
+  -------------
 
   solveSystemSimple() (regular C, no SIMD, no multithreading)     2655 sec
 
   solveSystem() (SIMD, multithreading)
-  *num threads 1                                                    172
-  *num threads 2                                                    137
+  
+  num threads 1                                                    172
+  
+  num threads 2                                                    137
+  
   num threads 3                                                    145
+  
   num threads 4                                                    147
+  
   num threads 5                                                    152
   
   num threads 6                                                    156
   
   num threads 7                                                    158
+  
   num threads 8                                                    151
+  
   num threads 9                                                    151
+  
   num threads 10                                                   152
 
   Max speedup 19.4
@@ -55,19 +64,30 @@ The code is compiled in Release on VS 2019, optimised.
   solveSystemSimple() (regular C, no SIMD, no multithreading)     3624 sec
 
   solveSystem() (SIMD, multithreading)
+  
   num threads 1                                                    330
+  
   num threads 2                                                    268
+  
   num threads 3                                                    283
+  
   num threads 4                                                    286
+  
   num threads 5                                                    312
+  
   num threads 6                                                    311
+  
   num threads 7                                                    306
+  
   num threads 8                                                    300
+  
   num threads 9                                                    299
+  
   num threads 10                                                   300
 
   Max speedup 13.5
 
 95% of CPU time is spent on ThreadProc4()/ThreadProc8(). Simple C++ 11/14 thread construction/destruction does not take much time.
+
 Increase in number of threads does not demonstrate sufficient speedup due to current CPU - 6 logical cores. My previuos tests on a desktop with 2 Xeons (32 cores and multiple real sets of XMM registers) made speedup of up to 140 with multiple threads.
 
