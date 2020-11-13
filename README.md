@@ -13,7 +13,11 @@ The code uses Intel intrinsics with the compiler optimiser which together produc
 Allocator
 ---------
 We need a big chunk of memory in one extent to place the system matrix in it.
-Class Allocator allocates a big buffer to hold the whole matrix in memory and save/restore its contents in a file. Allocation is 16-byte aligned by a normal malloc() in 64-bit code. This enables use of 16-byte aligned XMM intructions which, in my experiments give some poor improvement in speed (5-10%). Not very much, despite non-aligned instructions would require two memory reads instead of one in loading/writing XMM register contents from/to memory.
+
+Class Allocator allocates a big buffer to hold the whole matrix in memory and save/restore its contents in a file. The file is created in current directory named as <I>VirtSquareMatrix.bin</I>. This directory must be writable - no checks made. You may change it to a path in a temporary directory.
+
+Allocation is 16-byte aligned by a normal malloc() in 64-bit code. This enables use of 16-byte aligned XMM intructions which, in my experiments give some poor improvement in speed (5-10%). Not very much, despite non-aligned instructions would require two memory reads instead of one in loading/writing XMM register contents from/to memory.
+
 More complicated allocator (actually not used in the this console project at all) is SharedMem class derived from Allocator. It allocates buffer in shared memory which theoretically can be bigger than that created by malloc(). It works only in Windows as it creates shared memory by Windows-specific functions. To use it, initialise VirtSquareMatrix() with a SharedMem object instead of Allocator object. 
 
 Files
