@@ -59,7 +59,7 @@ The code is compiled in Release on VS 2019, optimised.
   
   num threads 10                                                   152
 
-  Max speedup 19.4
+  <B>Max speedup 19.4</B>
 
 
   8-byte floats
@@ -89,7 +89,7 @@ The code is compiled in Release on VS 2019, optimised.
   
   num threads 10                                                   300
 
-  Max speedup 13.5
+  <B>Max speedup 13.5</B>
 
 95% of CPU time is spent on ThreadProc4()/ThreadProc8(). Simple C++ 11/14 thread construction/destruction does not take much time.
 
